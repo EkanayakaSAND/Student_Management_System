@@ -6,7 +6,7 @@ namespace Student_Management_System
     public class DbDataContext : DbContext
     {
         //Change this path to your database full path
-        private readonly string _path = @"F:\UOR\FacultyOfEngineering\Projects\Student_Management_System\Student_Management_System\Database.db";
+        private readonly string _path = @"<Add your absolute path to database>";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
