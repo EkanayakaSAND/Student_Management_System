@@ -1,0 +1,113 @@
+﻿<Window x:Class="Student_Management_System.Views.Students.AddModuleToStudentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Student_Management_System.Views.Students"
+        mc:Ignorable="d"
+        xmlns:viewmodel="clr-namespace:Student_Management_System.Viewmodels.Students"
+        WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent"  AllowsTransparency="True"
+        Title="Add Modules" Height="450" Width="800">
+    <Window.DataContext>
+        <viewmodel:AddModuleToStudentWindowVM/>
+        </Window.DataContext>
+    <Border Background="White" CornerRadius="5" BorderThickness="2" BorderBrush="Black">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="100" />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+    
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <StackPanel Margin="20 0 0 0" Orientation="Horizontal" VerticalAlignment="Center">
+                        <TextBlock Text="Reg No : "/>
+                        <TextBlock Width="100" Text="{Binding StdRegNo}"/>
+
+                        <TextBlock Text="Name : "/>
+                        <TextBlock Text="{Binding StdName}"/>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button Click="Button_Click" Style="{StaticResource SmallButton}"
+                            Margin="0 10 0 0">
+                        <StackPanel>
+                            <Icon:PackIconMaterial Kind="CloseBox"  VerticalAlignment="Center" Width="20" Height="20"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+    
+            <Grid Grid.Row="1">
+                <StackPanel>
+                    <StackPanel Margin="20 0 0 0" Orientation="Horizontal">
+                        <TextBlock Width="60" Text="Module"/>
+                        <ComboBox 
+                            SelectedIndex="0"
+                            DisplayMemberPath="Name"
+                            SelectedItem="{Binding SelectedModule}"
+                            ItemsSource="{Binding ModuleItems}" 
+                            Width="200"/>
+                    </StackPanel>
+                    <StackPanel Margin="20 20 0 0" Orientation="Horizontal">
+                        <TextBlock Width="60" Text="Grade"/>
+                        <ComboBox 
+                            SelectedIndex="0"
+                            SelectedItem="{Binding SelectedGrade}"
+                            ItemsSource="{Binding GradeItems}"
+                            Width="200"/>
+                        <Button Width="140" Style="{StaticResource command_button}"
+                            Command="{Binding AddCommand}" Margin="30 0 0 0">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Plus" Style="{StaticResource gridbuttonicon}" VerticalAlignment="Center" Width="20" Height="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="ADD" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </Button>
+                        <Button Width="140" Style="{StaticResource command_button}"
+                            Command="{Binding DeleteCommand}"
+                            Margin="30 0 0 0">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource gridbuttonicon}" VerticalAlignment="Center" Width="20" Height="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="DELETE" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </Button>
+                        <Button Width="140" Style="{StaticResource command_button}"
+                            Command="{Binding RefreshCommand}"
+                            Margin="30 0 0 0">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Refresh" Style="{StaticResource gridbuttonicon}" VerticalAlignment="Center" Width="20" Height="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="REFRESH" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+    
+            <Grid Grid.Row="2">
+                <Grid Width="410" Margin="20 0 0 15" HorizontalAlignment="Left">
+                    <ListView FontSize="14" SelectedItem="{Binding EnrolledSelectedModule}" ItemsSource="{Binding EnrolledModulesList}">
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Clear"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Code" Width="100" DisplayMemberBinding="{Binding ModuleCode, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Name" Width="250" DisplayMemberBinding="{Binding ModuleName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Grade" Width="50" DisplayMemberBinding="{Binding Grade, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

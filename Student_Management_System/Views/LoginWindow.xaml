@@ -1,0 +1,129 @@
+﻿<Window x:Class="Student_Management_System.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Student_Management_System.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="LoginWindow"  Height="400" Width="650" WindowStyle="None"
+        Background="Transparent"  AllowsTransparency="True">
+    <Border CornerRadius="5" Background="White" BorderThickness="2">
+        <Border.BorderBrush>
+            <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                <GradientStop Color="#1612c9" Offset="1"/>
+                <GradientStop Color="#5754e8" Offset="0"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid Background="Transparent" Margin="60 30">
+                <Image Opacity="0.1" Height="320" Margin="0 5 0 0">
+                    <Image.Source>
+                        <BitmapImage UriSource="/Images/R.png"/>
+                    </Image.Source>
+                </Image>
+                <TextBlock
+                        Margin="-40 -20 0 0"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Text="Student Management System"/>
+                <StackPanel Margin="10">
+                    <Image Height="80" Margin="0 5 0 0">
+                        <Image.Source>
+                            <BitmapImage UriSource="/Images/R.png"/>
+                        </Image.Source>
+                    </Image>
+                    <TextBlock
+                        Margin="0 0 0 0"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Text="LOGIN"/>
+                    
+
+                    <StackPanel>
+                        <TextBlock
+                            Margin="50 0 0 10"
+                            Foreground="Gray"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            Text="Username"/>
+                        <TextBox
+                            x:Name="txt_username"
+                            Margin="10 0"
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Medium"
+                            FontFamily="Montserrat"
+                            Background="Transparent"
+                            Foreground="Black"
+                            CaretBrush="LightGray"
+                            BorderBrush="Black"
+                            Width="400"
+                            Height="30"
+                            BorderThickness="0 0 0 1"
+                            Padding="30 0 0 10"/>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock
+                            Margin="50 10 0 0"
+                            Foreground="Gray"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="16"
+                            Text="Password"/>
+                        <Icon:PackIconMaterial Margin="60 -100 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"  Kind="Account"/>
+                        <Icon:PackIconMaterial Margin="60 10 0 -20"  HorizontalAlignment="Left" VerticalAlignment="Center"  Kind="key"/>
+                        <PasswordBox
+                            x:Name="txt_passwd"
+                            Margin="10 0"
+                            FontSize="16"
+                            FontWeight="Medium"
+                            FontFamily="Montserrat"
+                            Background="Transparent"
+                            Foreground="Black"
+                            CaretBrush="LightGray"
+                            BorderBrush="Black"
+                            Width="400"
+                            Height="30"
+                            BorderThickness="0 0 0 1"
+                            Padding="30 0 0 10"/>
+                    </StackPanel>
+
+                    <StackPanel
+                        Margin="10 0"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button Style="{StaticResource command_button}"
+                            Click="btn_submit_Click"
+                            x:Name="btn_submit"
+                            FontSize="16"
+                            Margin="20 20 0 40">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Login" Style="{StaticResource gridbuttonicon}" VerticalAlignment="Center" Width="20" Height="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="SUBMIT" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </Button>
+                        <Button Style="{StaticResource command_button}"
+                            Click="btn_cancel_Click"
+                            x:Name="btn_cancel"
+                            VerticalAlignment="Center"
+                            Margin="20 20 0 40"
+                            FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Cancel" Style="{StaticResource gridbuttonicon}" VerticalAlignment="Center" Width="20" Height="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="CANCEL" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

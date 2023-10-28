@@ -1,0 +1,120 @@
+﻿<Window x:Class="Student_Management_System.Views.Users.DisplayUsersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Student_Management_System.Views.Users"
+        xmlns:viewmodel="clr-namespace:Student_Management_System.Viewmodels.Users"
+        mc:Ignorable="d"
+         WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Background="Transparent"  AllowsTransparency="True"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+        Title="Display Users">
+    <Window.DataContext>
+        <viewmodel:DisplayUsersWindowVM/>
+    </Window.DataContext>
+    <Border Background="White" CornerRadius="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Border Background="#e8e8e8" Margin="10" CornerRadius="5"
+                            HorizontalAlignment="Left" Width="700">
+                        <TextBlock
+                            FontWeight="Bold"
+                            FontSize="70"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left"
+                            Margin="20 0 0 0"
+                            Text="User Management"/>
+                    </Border>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button Click="Button_Click" Style="{StaticResource SmallButton}"
+                            Margin="0 10 0 0">
+                        <StackPanel>
+                            <Icon:PackIconMaterial Kind="CloseBox"  VerticalAlignment="Center" Width="20" Height="20"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <ListView FontSize="16" SelectedItem="{Binding SelectedUser}" ItemsSource="{Binding Users, Mode=TwoWay}">
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Clear"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Username" Width="150" DisplayMemberBinding="{Binding Username, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                                <GridViewColumn Header="Name" Width="300" DisplayMemberBinding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn Header="Contact Number" Width="150" DisplayMemberBinding="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                <GridViewColumn  Header="Address" Width="600" DisplayMemberBinding="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </Grid>
+
+                <Grid Grid.Column="1">
+                    <StackPanel> 
+                        <Button Style="{StaticResource command_button}"
+                            Command="{Binding AddUserCommand}"
+                            Padding="2"
+                            Width="150"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Margin="0 40 20 20">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Plus" Style="{StaticResource gridbuttonicon}" VerticalAlignment="Center" Width="20" Height="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="ADD USER" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource command_button}"
+                            Command="{Binding EditUserCommand}"
+                            Padding="2"
+                            Width="150"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Margin="0 20 20 40">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Pencil" Style="{StaticResource gridbuttonicon}" VerticalAlignment="Center" Width="20" Height="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="EDIT USER" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </Button>
+
+                        <Button Style="{StaticResource command_button}"
+                            Command="{Binding DeleteUserCommand}"
+                            Padding="2"
+                            Width="150"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Margin="0 0 20 0">
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Kind="Delete" Style="{StaticResource gridbuttonicon}" VerticalAlignment="Center" Width="20" Height="20" Margin="0 0 10 0"/>
+                                <TextBlock Text="DELETE USER" FontWeight="DemiBold" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
