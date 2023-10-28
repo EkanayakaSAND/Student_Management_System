@@ -20,7 +20,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
-                <TextBlock Text="Adding a Module"
+                <TextBlock Text="Add Module"
                            FontSize="50"
                            FontWeight="DemiBold"
                            Margin="20 10 0 0"/>
