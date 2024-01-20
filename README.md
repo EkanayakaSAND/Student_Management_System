@@ -23,7 +23,7 @@ This project is a desktop application developed in C# using WPF and SQLite for a
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/SANDE-98/Student_Management_System.git
+   git clone https://github.com/EkanayakaSAND/Student_Management_System.git
  
    
 2. **Open the Project:**
